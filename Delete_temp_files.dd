@@ -1,0 +1,26 @@
+DELAY 850
+GUI r
+DELAY 625
+STRING powershell
+DELAY 500
+CTRL SHIFT ENTER
+DELAY 2100
+LEFT
+DELAY 500
+ENTER
+DELAY 500
+ALT SPACE
+DELAY 325
+DOWN
+DELAY 325
+DOWN
+DELAY 325
+DOWN
+DELAY 325
+DOWN
+DELAY 325
+ENTER
+DELAY 2750
+STRING $foldersToClean = @("$env:Temp", "$env:SystemRoot\Temp", "$env:SystemDrive\Temp", "$env:SystemDrive\Windows\Prefetch", "$env:SystemDrive\Windows\SoftwareDistribution\Download"); foreach ($folder in $foldersToClean) { if (Test-Path $folder) { Get-ChildItem -Path $folder -Recurse -Force | Remove-Item -Recurse -Force } else { Write-Host "Folder doesn't exist: $folder" } }; Write-Host "System cleanup finished!"
+DELAY 1000
+ENTER
