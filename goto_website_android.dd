@@ -1,0 +1,8 @@
+DELAY 500
+GUI b
+DELAY 700
+CTRL l
+DELAY 750
+STRING https://averageskidx.github.io/home/
+DELAY 325
+ENTER
